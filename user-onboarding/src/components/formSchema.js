@@ -14,6 +14,11 @@ export default yup.object().shape({
     .min(4)
     .max(10)
     .required("Please enter a valid password"),
+    role: yup
+    .string()
+    .required('Please select a role.')
+    .oneOf(['Engineer', 'Developer', 'Designer'], 
+    'You must select a role from the list.'),
     tosCheck: yup
     .boolean()
     .oneOf([true], "Please read and accept the Terms of Service")

@@ -6,6 +6,7 @@ const initialFormData = {
     name: '',
     email: '',
     password: '',
+    role: '',
     tosCheck: false,
 }
 
@@ -13,6 +14,7 @@ const intialFromErrors = {
     name: '',
     email: '',
     password: '',
+    role: '',
     tosCheck: '',
 }
 
@@ -88,6 +90,15 @@ const Form = (props) => {
               onChange={handleChange}
             />
           </label>
+
+          <label>Role{formErrors.role.length > 0 ? ` - ${formErrors.role}` : formErrors.role}
+          <select value={formData.role} name='role' onChange={handleChange}>
+            <option value=''>Select</option>
+            <option value='Engineer'>Engineer</option>
+            <option value='Developer'>Developer</option>
+            <option value='Designer'>Designer</option>
+          </select>
+        </label>
     
           <label htmlFor="tosCheck">
             Accept{" "}
@@ -95,10 +106,12 @@ const Form = (props) => {
               Terms of Service
             </a>
             <input
+              id="tosCheck"
               type="checkbox"
               name="tosCheck"
               checked={formData.tosCheck}
               onChange={handleChange}
+              className={formData.tosCheck ? "filled-in" : "unChecked"}
             />
           </label>
           <button action="submit" onClick={handleSubmit} disabled={disabled}>
@@ -109,6 +122,7 @@ const Form = (props) => {
          <div>{formErrors.email}</div>
          <div>{formErrors.password}</div>
          <div>{formErrors.tosCheck}</div>
+         <div>{formErrors.role}</div>
          </div>
         </form>
       )

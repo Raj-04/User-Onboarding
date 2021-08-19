@@ -8,6 +8,7 @@ function App() {
       name: "",
       email: "",
       password: "",
+      role: "",
       tosCheck: true,
     },
   ];
